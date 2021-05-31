@@ -1,9 +1,7 @@
 # get-attribute
-# update-attribute
+# Set-attribute
 # remove-attribute
 # new-attribute
-# check-attribute - check out pester tests perhaps? if not, write a custom function
-Import-Module Pester
 
 function Get-Attribute
 {
@@ -40,13 +38,16 @@ function Get-Attribute
         {
             
             $AttributeValue = $FileContent[$I] -replace "<$Attribute>","" -replace "</$Attribute>",""
-            return $AttributeValue
+            $data = @(
+            [pscustomobject]@{AttributeName=$Attribute;Attribute=$AttributeValue;LineCount = $I }
+            )
+
+            return $data
 
         }
 
     }
        
 }
-
 
 #Get-Attribute -Filepath .\test.txt -String "<StringStart1>" -Attribute "attribute4"

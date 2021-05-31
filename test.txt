@@ -2,7 +2,7 @@
 <Attribute1>test1</Attribute1>
 <Attribute2>test2</Attribute2>
 <Attribute3>test3</Attribute3>
-<Attribute4>test4</Attribute4>
+<Attribute4>Test4</Attribute4>
 <Attribute5>test5</Attribute5>
 <Attribute6>test6</Attribute6>
 <Attribute7>test7</Attribute7>

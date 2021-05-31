@@ -9,7 +9,7 @@ function Get-Attribute
     (
         [string]$Filepath,
         [string]$String,
-        [string]$Attribute
+        [string]$AttributeName
     )
 
     if (Test-Path $Filepath)
@@ -34,12 +34,12 @@ function Get-Attribute
             $CheckFlag = 0
         }
 
-        if($CheckFlag -eq 1 -and $FileContent[$I] -match $Attribute)
+        if($CheckFlag -eq 1 -and $FileContent[$I] -match $AttributeName)
         {
             
-            $AttributeValue = $FileContent[$I] -replace "<$Attribute>","" -replace "</$Attribute>",""
+            $CurrentAttribute = $FileContent[$I] -replace "<$AttributeName>","" -replace "</$AttributeName>",""
             $data = @(
-            [pscustomobject]@{AttributeName=$Attribute;Attribute=$AttributeValue;LineCount = $I }
+            [pscustomobject]@{FilePath=$Filepath;String=$String;AttributeName=$AttributeName;AttributeValue=$CurrentAttribute;LineCount = $I }
             )
 
             return $data
